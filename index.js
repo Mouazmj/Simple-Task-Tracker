@@ -17,9 +17,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/add', (req, res) => {
-
+    res.render('add')
 })
 
 app.post('/add', (req, res) => {
+    const newTask = {
+        id: Date.now(),
+        title: req.body.taskTitle,
+        priority: req.body.taskPriority,
+        completed: false,
+    }
 
+    tasks.push(newTask)
+    res.redirect('/')
 })
